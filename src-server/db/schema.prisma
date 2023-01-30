@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../../data/data.db"
+}
+
+model User {
+  id              String   @id @default(uuid())
+
+  pfp             String
+  discordId       String
+  username        String
+  tag             String
+  admin           Boolean  @default(false)
+
+  domains         Subdomain[]
+
+  frontpageName     String @default("")
+  frontpageDomainId String @default("")
+  frontpageColor    String @default("556cd4")
+}
+
+model WhitelistedUser {
+  id          String   @id @default(uuid())
+  discordId   String
+}
+
+model Subdomain {
+  id          String   @id @default(uuid())
+
+  // the subdomain is split into parts for ease
+  name        String   // mae
+  domain      String   // meow
+
+  ownedBy     User[]
+  cfZoneId    String   // Cloudflare Zone ID
+}
+
+// for express sessions
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt   DateTime
+}
