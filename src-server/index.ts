@@ -9,8 +9,11 @@ import AuthStrategy from './auth/authStrategy';
 import prisma from './db/db';
 import { checkAdmin, checkAuthClient, checkAuthRedirect } from './auth/checkAuth';
 import { PrismaSessionStore } from '@quixo3/prisma-session-store';
+import path from 'path';
 
-dotenv.config()
+dotenv.config({
+  path: path.join(__dirname, '../.env')
+})
 passport.use(AuthStrategy)
 
 const isDev = process.env.NODE_ENV !== 'production'
