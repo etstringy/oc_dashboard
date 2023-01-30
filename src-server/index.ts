@@ -1,19 +1,20 @@
+import * as dotenv from 'dotenv'
+import path from 'path';
+dotenv.config({
+  path: path.join(__dirname, '../.env')
+})
+
 import next from 'next';
 import express from 'express';
 import expressSession from 'express-session';
 import passport from 'passport'
-import * as dotenv from 'dotenv'
 import ApiRouter from './api/router'
 import AuthRouter from './auth/router'
 import AuthStrategy from './auth/authStrategy';
 import prisma from './db/db';
 import { checkAdmin, checkAuthClient, checkAuthRedirect } from './auth/checkAuth';
 import { PrismaSessionStore } from '@quixo3/prisma-session-store';
-import path from 'path';
 
-dotenv.config({
-  path: path.join(__dirname, '../.env')
-})
 passport.use(AuthStrategy)
 
 const isDev = process.env.NODE_ENV !== 'production'
