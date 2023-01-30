@@ -1,10 +1,11 @@
+import '../styles/globals.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import axios from 'axios'
 
-export async function getServerSideProps() {
+export async function getInitProps() {
   const data = await axios.get(process.env.NEXT_DOMAIN + '/api/frontpage')
   return {
     props: {
