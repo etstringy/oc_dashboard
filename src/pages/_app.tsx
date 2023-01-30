@@ -1,5 +1,4 @@
-import '../styles/globals.css'
-import '../styles/others.css';
+import '../main.css'
 import { Cabin } from '@next/font/google'
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
