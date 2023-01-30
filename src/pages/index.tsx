@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import axios from 'axios'
 
-export async function getServerSideProps() {
+export async function getInitialProps() {
   const data = await axios.get(process.env.NEXT_DOMAIN + '/api/frontpage')
   return {
     props: {
