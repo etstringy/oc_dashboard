@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import axios from 'axios'
 
-Home.getInitialProps = async (ctx) => {
+Home.getInitialProps = async () => {
   const data = await axios.get(process.env.NEXT_DOMAIN + '/api/frontpage')
   return {
     pages: data.data
